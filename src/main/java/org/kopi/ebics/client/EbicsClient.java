@@ -52,7 +52,7 @@ import org.kopi.ebics.interfaces.LetterManager;
 import org.kopi.ebics.interfaces.PasswordCallback;
 import org.kopi.ebics.io.IOUtils;
 import org.kopi.ebics.messages.Messages;
-import org.kopi.ebics.schema.h003.OrderAttributeType;
+import org.kopi.ebics.schema.h004.OrderAttributeType;
 import org.kopi.ebics.session.DefaultConfiguration;
 import org.kopi.ebics.session.EbicsSession;
 import org.kopi.ebics.session.OrderType;

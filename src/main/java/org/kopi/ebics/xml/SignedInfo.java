@@ -151,7 +151,7 @@ public class SignedInfo extends DefaultEbicsRootElement {
 
   @Override
   public byte[] toByteArray() {
-    addNamespaceDecl("", "http://www.ebics.org/H003");
+    addNamespaceDecl("", "http://www.ebics.org/H004");
     setSaveSuggestedPrefixes("http://www.w3.org/2000/09/xmldsig#", "ds");
 
     return super.toByteArray();

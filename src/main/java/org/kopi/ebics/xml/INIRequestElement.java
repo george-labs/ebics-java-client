@@ -63,7 +63,7 @@ public class INIRequestElement extends DefaultEbicsRootElement {
 
   @Override
   public byte[] toByteArray() {
-    setSaveSuggestedPrefixes("http://www.ebics.org/H003", "");
+    setSaveSuggestedPrefixes("http://www.ebics.org/H004", "");
 
     return unsecuredRequest.toByteArray();
   }
