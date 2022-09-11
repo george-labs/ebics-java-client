@@ -58,6 +58,7 @@ import org.kopi.ebics.session.EbicsSession;
 import org.kopi.ebics.session.OrderType;
 import org.kopi.ebics.session.Product;
 import org.kopi.ebics.utils.Constants;
+import org.kopi.ebics.utils.Utils;
 
 /**
  * The ebics client application. Performs necessary tasks to contact the ebics
@@ -620,6 +621,9 @@ public class EbicsClient {
         options.addOption("o", "output", true, "output file");
         options.addOption("i", "input", true, "input file");
 
+        options.addOption("f", "from", true, "From/start date (yyyy-MM-dd)");
+        options.addOption("t", "to", true, "To/end date (yyyy-MM-dd)");
+        options.addOption("test", "test", false, "test session");
 
         CommandLine cmd = parseArguments(options, args);
 
@@ -651,6 +655,20 @@ public class EbicsClient {
         String outputFileValue = cmd.getOptionValue("o");
         String inputFileValue = cmd.getOptionValue("i");
 
+        String fromDateValue = cmd.getOptionValue("f");
+        String toDateValue = cmd.getOptionValue("t");
+
+        boolean isTest = false;
+        if (cmd.hasOption("test")) {
+            isTest = true;
+        }
+        Date start = null, end = null;
+        if (fromDateValue != null && !fromDateValue.isEmpty()) {
+            start = Utils.parse(fromDateValue);
+            end = (toDateValue != null && !toDateValue.isEmpty()) ? Utils.parse(toDateValue) : new Date();
+        } else if (toDateValue != null && !toDateValue.isEmpty()) {
+            throw new EbicsException("Start date required if end date is given");
+        }
 
         List<? extends EbicsOrderType> fetchFileOrders = Arrays.asList(OrderType.STA, OrderType.VMK,
             OrderType.C52, OrderType.C53, OrderType.C54,
@@ -659,7 +677,7 @@ public class EbicsClient {
         for (EbicsOrderType type : fetchFileOrders) {
             if (hasOption(cmd, type)) {
                 client.fetchFile(getOutputFile(outputFileValue), client.defaultUser,
-                    client.defaultProduct, type, false, null, null);
+                        client.defaultProduct, type, isTest, start, end);
                 break;
             }
         }
