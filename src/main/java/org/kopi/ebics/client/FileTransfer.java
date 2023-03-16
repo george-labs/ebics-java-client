@@ -30,7 +30,7 @@ import org.kopi.ebics.interfaces.EbicsOrderType;
 import org.kopi.ebics.io.ByteArrayContentFactory;
 import org.kopi.ebics.io.Joiner;
 import org.kopi.ebics.messages.Messages;
-import org.kopi.ebics.schema.h003.OrderAttributeType;
+import org.kopi.ebics.schema.h004.OrderAttributeType;
 import org.kopi.ebics.session.EbicsSession;
 import org.kopi.ebics.utils.Constants;
 import org.kopi.ebics.utils.Utils;

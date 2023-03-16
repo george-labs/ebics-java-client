@@ -30,7 +30,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.kopi.ebics.exception.EbicsException;
 import org.kopi.ebics.interfaces.EbicsOrderType;
-import org.kopi.ebics.schema.h003.EbicsRequestDocument;
+import org.kopi.ebics.schema.h004.EbicsRequestDocument;
 import org.kopi.ebics.session.EbicsSession;
 import org.kopi.ebics.utils.Utils;
 
@@ -81,7 +81,7 @@ public abstract class InitializationRequestElement extends DefaultEbicsRootEleme
 
   @Override
   public byte[] toByteArray() {
-    setSaveSuggestedPrefixes("http://www.ebics.org/H003", "");
+    setSaveSuggestedPrefixes("http://www.ebics.org/H004", "");
 
     return super.toByteArray();
   }

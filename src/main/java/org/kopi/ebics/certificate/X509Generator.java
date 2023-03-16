@@ -243,7 +243,7 @@ public class X509Generator {
     input = new ByteArrayInputStream(publicKey.getEncoded());
     keyInfo = new SubjectPublicKeyInfo((ASN1Sequence)new ASN1InputStream(input).readObject());
 
-    return  new SubjectKeyIdentifier(keyInfo);
+    return new SubjectKeyIdentifier(keyInfo.getEncoded());
   }
 
   /**
